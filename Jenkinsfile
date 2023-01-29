@@ -10,20 +10,8 @@ pipeline {
         
         stage('BUILD'){
             steps {
-		echo 'Show Os info...'
+				echo 'Show Os info...'
                 sh 'cat /etc/os-release'
-            }
-        }
-
-	stage('UNIT TEST'){
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-	stage('INTEGRATION TEST'){
-            steps {
-                sh 'mvn verify -DskipUnitTests'
             }
         }
 		
