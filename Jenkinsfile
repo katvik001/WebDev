@@ -10,13 +10,8 @@ pipeline {
         
         stage('BUILD'){
             steps {
-                sh 'mvn clean install -DskipTests'
-            }
-            post {
-                success {
-                    echo 'Now Copying...'
-                    archiveArtifacts artifacts: '**/'
-                }
+		echo 'Show Os info...'
+                sh 'cat /etc/os-release'
             }
         }
 
