@@ -17,7 +17,7 @@ pipeline {
 		
 	stage('Upload Artifacts'){
             steps {
-                sh 'scp -v -o StrictHostKeyChecking=no -r * vagrant@10.10.10.20:/var/www/html/'
+                sh 'scp -i /var/lib/jenkins/secrets/mykey.pub -r * vagrant@docker01:/var/www/html/'
             }
         }			
 		
