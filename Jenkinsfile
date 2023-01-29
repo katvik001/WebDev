@@ -17,9 +17,9 @@ pipeline {
 		
 	stage('Upload Artifacts'){
             steps {
-		sh 'systemctl stop nginx'
+		sh 'sudo systemctl stop nginx.service'
                 sh 'scp -i /var/lib/jenkins/secrets/mykey -r * vagrant@docker01:/var/www/html/'
-		sh 'systemctl start nginx'
+		sh 'sudo systemctl start nginx.service'
             }
         }			
 		
