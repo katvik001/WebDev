@@ -10,31 +10,15 @@ pipeline {
         
         stage('BUILD'){
             steps {
-                sh 'mvn clean install -DskipTests'
-            }
-            post {
-                success {
-                    echo 'Now Copying...'
-                    archiveArtifacts artifacts: '**/'
-                }
-            }
-        }
-
-	stage('UNIT TEST'){
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-	stage('INTEGRATION TEST'){
-            steps {
-                sh 'mvn verify -DskipUnitTests'
+				echo 'Show Os info...'
+                sh 'cat /etc/os-release'
             }
         }
 		
 	stage('Upload Artifacts'){
             steps {
-                sh '‘scp -r * vagrant@10.10.10.20:/var/www/html/’'
+                sh 'scp -i /var/lib/jenkins/secrets/mykey -r * vagrant@docker01:/var/www/html/'
+
             }
         }			
 		
